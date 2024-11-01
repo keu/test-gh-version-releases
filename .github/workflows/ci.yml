@@ -1,0 +1,16 @@
+name: Merge Queue Handler
+
+on:
+  pull_request:
+    types: [ready_for_review]
+
+jobs:
+  handle-merge-queue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Print Pull Request Description
+        run: echo "${{ github.event.pull_request.body }}"
